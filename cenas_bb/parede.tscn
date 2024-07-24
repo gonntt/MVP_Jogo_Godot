@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi13hrwb7lxob"]
+
+[ext_resource type="Script" path="res://script/obstaculo_muro_de_terra.gd" id="1_xo353"]
+[ext_resource type="Texture2D" uid="uid://cr1mrk5swro5i" path="res://sprites_gameplay/earth.atlastex" id="2_mg0t5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5pxt"]
+size = Vector2(129, 205)
+
+[node name="Parede" type="StaticBody2D"]
+script = ExtResource("1_xo353")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -112)
+scale = Vector2(-0.64, 0.621787)
+texture = ExtResource("2_mg0t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -106.5)
+shape = SubResource("RectangleShape2D_i5pxt")

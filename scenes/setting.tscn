@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://32yp8brbmdih"]
+
+[ext_resource type="Texture2D" uid="uid://ctkm7nc23s12y" path="res://sprites/Fundoo.png" id="1_70c4n"]
+[ext_resource type="Script" path="res://script/setting.gd" id="1_jrj3h"]
+[ext_resource type="Texture2D" uid="uid://bx0nm7p4q7k8r" path="res://sprites/button_slide.atlastex" id="2_vdhye"]
+[ext_resource type="Texture2D" uid="uid://7lbqobj84261" path="res://sprites/slide.atlastex" id="3_jktv4"]
+[ext_resource type="Theme" uid="uid://jxj873jkjfax" path="res://font/font_button_menu.tres" id="4_8dn3a"]
+[ext_resource type="Texture2D" uid="uid://dh2o7ogp4wh08" path="res://sprites/button1.atlastex" id="5_j3dm0"]
+[ext_resource type="Texture2D" uid="uid://x2o36s8r8w36" path="res://sprites/volume.atlastex" id="6_u753r"]
+
+[sub_resource type="Theme" id="Theme_cjqyv"]
+HSlider/icons/grabber = ExtResource("2_vdhye")
+HSlider/icons/grabber_highlight = ExtResource("2_vdhye")
+HSlider/icons/tick = ExtResource("3_jktv4")
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jrj3h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_70c4n")
+expand_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_cjqyv")
+
+[node name="back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_8dn3a")
+text = "   Volta    "
+icon = ExtResource("5_j3dm0")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="volume" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("6_u753r")
+
+[node name="FullScreen" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("4_8dn3a")
+text = "FullScreen"
+icon = ExtResource("5_j3dm0")
+flat = true
+icon_alignment = 1
+
+[connection signal="value_changed" from="MarginContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/FullScreen" to="." method="_on_full_screen_pressed"]

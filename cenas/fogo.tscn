@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://lw5vp1se6ikj"]
+
+[ext_resource type="Texture2D" uid="uid://3eo7si4pofpg" path="res://sprites_gameplay/fogo.atlastex" id="1_owuhf"]
+[ext_resource type="Script" path="res://script/projetil.gd" id="2_mnc8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4reeu"]
+size = Vector2(108, 64)
+
+[node name="Fogo" type="Area2D"]
+script = ExtResource("2_mnc8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("1_owuhf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4reeu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

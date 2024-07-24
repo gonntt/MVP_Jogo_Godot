@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://d10fowkmanst7"]
+
+[ext_resource type="Texture2D" uid="uid://cf8kebv4pvqpn" path="res://sprites_gameplay/VVvento3.atlastex" id="1_j8w5h"]
+[ext_resource type="Script" path="res://mobs/morte_mob5.gd" id="1_y7xsy"]
+[ext_resource type="Script" path="res://mobs/VVvento.gd" id="2_7602h"]
+[ext_resource type="Texture2D" uid="uid://g2a27wkspapa" path="res://sprites_gameplay/VVvento.atlastex" id="2_qbpgb"]
+[ext_resource type="Texture2D" uid="uid://csrylgw6ruxmm" path="res://sprites_gameplay/VVvento2.atlastex" id="3_vbmbt"]
+[ext_resource type="AudioStream" uid="uid://idr714vrvb8s" path="res://sonoro/vento_check.mp3" id="6_brdhg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwslv"]
+size = Vector2(430, 390)
+
+[sub_resource type="Animation" id="Animation_0sj32"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-4, -26), Vector2(42, -46), Vector2(0, -6)]
+}
+
+[sub_resource type="Animation" id="Animation_nqkgm"]
+resource_name = "projetil"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_qbpgb"), ExtResource("3_vbmbt"), ExtResource("1_j8w5h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-120, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D/AnimationPlayer/AudioStreamPlayer:autoplay")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8cel"]
+_data = {
+"idle": SubResource("Animation_0sj32"),
+"projetil": SubResource("Animation_nqkgm")
+}
+
+[node name="VVvento" type="Area2D"]
+script = ExtResource("1_y7xsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21, -26)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_j8w5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 2)
+shape = SubResource("RectangleShape2D_xwslv")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-198, 2)
+script = ExtResource("2_7602h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_n8cel")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Marker2D/AnimationPlayer"]
+stream = ExtResource("6_brdhg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

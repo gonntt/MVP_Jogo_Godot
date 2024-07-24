@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://lhp0ye4r4rd0"]
+
+[ext_resource type="Script" path="res://script/obstaculo_agua.gd" id="1_n1eik"]
+[ext_resource type="Texture2D" uid="uid://bqh5jikv258af" path="res://sprites_gameplay/ObstaculoAgua.atlastex" id="2_vpnq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcyji"]
+size = Vector2(195, 338.5)
+
+[node name="Poça" type="StaticBody2D" groups=["inimigo"]]
+script = ExtResource("1_n1eik")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 51)
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("2_vpnq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -166.75)
+shape = SubResource("RectangleShape2D_vcyji")

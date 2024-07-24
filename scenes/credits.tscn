@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://grbwq0jww0qn"]
+
+[ext_resource type="Script" path="res://script/credits.gd" id="1_1rcsh"]
+[ext_resource type="Texture2D" uid="uid://jugdfbw8hbp1" path="res://sprites/fundo_credits.png" id="1_yu5ht"]
+[ext_resource type="Theme" uid="uid://jxj873jkjfax" path="res://font/font_button_menu.tres" id="2_rw15v"]
+[ext_resource type="Texture2D" uid="uid://dh2o7ogp4wh08" path="res://sprites/button1.atlastex" id="3_7ejdr"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rcsh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_yu5ht")
+expand_mode = 2
+
+[node name="back" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_rw15v")
+text = "   Volta    "
+icon = ExtResource("3_7ejdr")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="credits" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_rw15v")
+text = "Game Design: Gonntt
+Progamador:Vitor Lobo, Gonntt,
+Polarb
+Design: Under
+Animador: Gonntt, Vitor Lobo,
+ Under"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/back" to="." method="_on_back_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds8wn8ikot8ii"]
+
+[ext_resource type="Script" path="res://script/obstaculo_relampago.gd" id="1_vpfb8"]
+[ext_resource type="Texture2D" uid="uid://drtuh3c1t3nty" path="res://sprites_gameplay/ray.atlastex" id="2_wu8eq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynqvf"]
+size = Vector2(121, 202)
+
+[node name="Trovao" type="StaticBody2D"]
+script = ExtResource("1_vpfb8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -110)
+scale = Vector2(-0.64, 0.636364)
+texture = ExtResource("2_wu8eq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -108)
+shape = SubResource("RectangleShape2D_ynqvf")

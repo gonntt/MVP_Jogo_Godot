@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8rbcqtgt45vn"]
+
+[ext_resource type="Script" path="res://script/Morte.gd" id="1_ykw87"]
+[ext_resource type="Texture2D" uid="uid://ctkm7nc23s12y" path="res://sprites/Fundoo.png" id="2_lf1i2"]
+[ext_resource type="Theme" uid="uid://jxj873jkjfax" path="res://font/font_button_menu.tres" id="3_vsnmd"]
+[ext_resource type="Texture2D" uid="uid://dh2o7ogp4wh08" path="res://sprites/button1.atlastex" id="4_gdbpc"]
+
+[node name="Morte" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ykw87")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_lf1i2")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Text" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+Você Morreu!"
+flat = true
+
+[node name="Menu" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_vsnmd")
+text = "
+   Menu  .
+       
+"
+icon = ExtResource("4_gdbpc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Reniciar" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vsnmd")
+text = "    
+Reniciar   
+ "
+icon = ExtResource("4_gdbpc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Reniciar" to="." method="_on_reniciar_pressed"]

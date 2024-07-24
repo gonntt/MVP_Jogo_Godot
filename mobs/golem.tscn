@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://cj0atfnlpv1v5"]
+
+[ext_resource type="Texture2D" uid="uid://cm2q6ck2q4jqb" path="res://sprites_gameplay/golem.atlastex" id="1_8rrhq"]
+[ext_resource type="Script" path="res://mobs/morte_mob3.gd" id="1_swmcd"]
+[ext_resource type="Script" path="res://mobs/golem.gd" id="2_qbln7"]
+[ext_resource type="Texture2D" uid="uid://cqrct33hqvxpx" path="res://sprites_gameplay/golem2.atlastex" id="2_uuija"]
+[ext_resource type="Texture2D" uid="uid://dr2phrxnflwcb" path="res://sprites_gameplay/golem3.atlastex" id="3_toj7l"]
+[ext_resource type="Texture2D" uid="uid://b25sjjvgnmb20" path="res://sprites_gameplay/golem4.atlastex" id="4_vp4h5"]
+[ext_resource type="Texture2D" uid="uid://dkhprs271scl5" path="res://sprites_gameplay/golem5.atlastex" id="5_t0ttf"]
+[ext_resource type="Texture2D" uid="uid://c8g0420u7j4t" path="res://sprites_gameplay/golem6.atlastex" id="6_xt5eg"]
+[ext_resource type="Texture2D" uid="uid://cxro3a8chlije" path="res://sprites_gameplay/golem7.atlastex" id="7_6r5pt"]
+[ext_resource type="AudioStream" uid="uid://b4akuqc5pulyy" path="res://sonoro/impacto rocha_check.mp3" id="10_xcyvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7c22"]
+size = Vector2(666, 420)
+
+[sub_resource type="Animation" id="Animation_i4c45"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_8rrhq"), ExtResource("2_uuija"), ExtResource("3_toj7l"), ExtResource("2_uuija")]
+}
+
+[sub_resource type="Animation" id="Animation_40p2p"]
+resource_name = "projetil"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_8rrhq"), ExtResource("2_uuija"), ExtResource("3_toj7l"), ExtResource("4_vp4h5"), ExtResource("5_t0ttf"), ExtResource("6_xt5eg"), ExtResource("7_6r5pt")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/AnimationPlayer/AudioStreamPlayer:autoplay")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l16bn"]
+_data = {
+"idle": SubResource("Animation_i4c45"),
+"projetil": SubResource("Animation_40p2p")
+}
+
+[node name="Golem" type="Area2D"]
+script = ExtResource("1_swmcd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_t0ttf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, -3)
+shape = SubResource("RectangleShape2D_g7c22")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-340, -4)
+script = ExtResource("2_qbln7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_l16bn")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Marker2D/AnimationPlayer"]
+stream = ExtResource("10_xcyvq")
+autoplay = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

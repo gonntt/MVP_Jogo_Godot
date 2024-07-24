@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://78v1glymhgwe"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_uyj3f"]
+[ext_resource type="Texture2D" uid="uid://dkvl2agy26qvu" path="res://sprites/Super Magic Runner.png" id="2_674c0"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_uyj3f")
+destination_path = "res://sprites"
+
+[node name="personagem" type="Sprite2D" parent="."]
+position = Vector2(-93, 220)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(788, 4015, 292, 298)
+
+[node name="morte" type="Sprite2D" parent="."]
+position = Vector2(-849, -979)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(304, 4670, 280, 216)
+
+[node name="morte2" type="Sprite2D" parent="."]
+position = Vector2(-466, -999)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(801, 4665, 287, 212)
+
+[node name="personagem2" type="Sprite2D" parent="."]
+position = Vector2(-403, 214)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(329, 4026, 273, 274)
+
+[node name="personagem3" type="Sprite2D" parent="."]
+position = Vector2(-763, 203)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(1275, 4007, 287, 287)
+
+[node name="personagem4" type="Sprite2D" parent="."]
+position = Vector2(245, 222)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(1768, 4006, 293, 296)
+
+[node name="volume" type="Sprite2D" parent="."]
+position = Vector2(-831, 560)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(496, 1147, 126, 117)
+
+[node name="button_slide" type="Sprite2D" parent="."]
+position = Vector2(-380, 554)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(2087, 1139, 56, 112)
+
+[node name="slide" type="Sprite2D" parent="."]
+position = Vector2(-201, -16)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(2057, 1038, 1166, 37)
+
+[node name="montanha" type="Sprite2D" parent="."]
+position = Vector2(-144, 1098)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(1436, 1451, 2257, 794)
+
+[node name="montanha2" type="Sprite2D" parent="."]
+position = Vector2(1850, 231)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(3846, 957, 1762, 1292)
+
+[node name="chao" type="Sprite2D" parent="."]
+position = Vector2(804, -209)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(161, 2400, 158, 160)
+
+[node name="chao2" type="Sprite2D" parent="."]
+position = Vector2(373, -209)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(479, 2362, 161, 196)
+
+[node name="chao3" type="Sprite2D" parent="."]
+position = Vector2(5, -209)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(799, 2373, 160, 188)
+
+[node name="chao4" type="Sprite2D" parent="."]
+position = Vector2(-327, -213)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(1120, 2368, 161, 193)
+
+[node name="attack" type="Sprite2D" parent="."]
+position = Vector2(-700, -258)
+texture = ExtResource("2_674c0")
+region_enabled = true
+region_rect = Rect2(1120, 2368, 161, 193)

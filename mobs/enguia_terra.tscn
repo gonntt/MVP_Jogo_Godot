@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2mrobxlpc1q6"]
+
+[ext_resource type="Texture2D" uid="uid://wbwxv444ia2l" path="res://sprites_gameplay/enguia1.atlastex" id="1_exjgs"]
+[ext_resource type="Script" path="res://mobs/enguia_terra.gd" id="1_h8haq"]
+[ext_resource type="Script" path="res://mobs/morte_mob2.gd" id="1_oqgjs"]
+[ext_resource type="Texture2D" uid="uid://ltq3yq5l8huo" path="res://sprites_gameplay/enguia1_2.atlastex" id="2_duhf5"]
+[ext_resource type="Texture2D" uid="uid://b5wcaijopj5al" path="res://sprites_gameplay/enguia1_3.atlastex" id="3_b7odb"]
+[ext_resource type="AudioStream" uid="uid://c5q33ykncn1au" path="res://sonoro/shock_check.mp3" id="6_yirrl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n274y"]
+size = Vector2(338, 340)
+
+[sub_resource type="Animation" id="Animation_itkkm"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(49, -60), Vector2(14, -31)]
+}
+
+[sub_resource type="Animation" id="Animation_bt3gl"]
+resource_name = "projetil"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_exjgs"), ExtResource("2_duhf5"), ExtResource("3_b7odb"), ExtResource("1_exjgs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/AnimationPlayer/AudioStreamPlayer:autoplay")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fcwa"]
+_data = {
+"idle": SubResource("Animation_itkkm"),
+"projetil": SubResource("Animation_bt3gl")
+}
+
+[node name="EnguiaTerra" type="Area2D"]
+script = ExtResource("1_oqgjs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22.75, -38.25)
+texture = ExtResource("1_exjgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -10)
+shape = SubResource("RectangleShape2D_n274y")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-161, -67)
+script = ExtResource("1_h8haq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Marker2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_3fcwa")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Marker2D/AnimationPlayer"]
+stream = ExtResource("6_yirrl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://1jjyw4tkuhqb"]
+
+[ext_resource type="Texture2D" uid="uid://duqgherujbvfk" path="res://sprites_gameplay/water.atlastex" id="1_71u23"]
+[ext_resource type="Script" path="res://script/projetil.gd" id="1_f32il"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlrvg"]
+size = Vector2(108, 64)
+
+[node name="Agua" type="Area2D"]
+script = ExtResource("1_f32il")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("1_71u23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dlrvg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4qmoxuqptjhv"]
+
+[ext_resource type="Texture2D" uid="uid://dabn1im8d85xo" path="res://sprites_gameplay/ObstaculoFogo.atlastex" id="1_6djo2"]
+[ext_resource type="Script" path="res://script/obstaculo_lava.gd" id="1_uu5wl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjkce"]
+size = Vector2(195, 333)
+
+[node name="Lava" type="StaticBody2D" groups=["inimigo"]]
+script = ExtResource("1_uu5wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 52)
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("1_6djo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -165.5)
+shape = SubResource("RectangleShape2D_tjkce")

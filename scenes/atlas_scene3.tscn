@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://djknqkoyeadii"]
+
+[ext_resource type="Script" path="res://addons/sprite_cutter/AtlasScene.gd" id="1_yk6se"]
+[ext_resource type="Texture2D" uid="uid://ctiilkfgsm4o5" path="res://Cenário.png" id="2_tatvd"]
+
+[node name="AtlasScene" type="Node"]
+script = ExtResource("1_yk6se")
+destination_path = "res://sprites_gameplay"
+
+[node name="ObstaculoTerra" type="Sprite2D" parent="."]
+position = Vector2(288, -45)
+texture = ExtResource("2_tatvd")
+region_enabled = true
+region_rect = Rect2(3032, 121, 171, 527)
+
+[node name="ObstaculoFogo" type="Sprite2D" parent="."]
+position = Vector2(523, -55)
+texture = ExtResource("2_tatvd")
+region_enabled = true
+region_rect = Rect2(3355, 478, 330, 163)
+
+[node name="ObstaculoAgua" type="Sprite2D" parent="."]
+position = Vector2(766, -42)
+texture = ExtResource("2_tatvd")
+region_enabled = true
+region_rect = Rect2(3837, 481, 327, 164)
+
+[node name="ObstaculoRaio" type="Sprite2D" parent="."]
+position = Vector2(1018, -45)
+texture = ExtResource("2_tatvd")
+region_enabled = true
+region_rect = Rect2(4638, 155, 167, 490)
+
+[node name="ObstaculoAr" type="Sprite2D" parent="."]
+position = Vector2(1368, 2)
+texture = ExtResource("2_tatvd")
+region_enabled = true
+region_rect = Rect2(4323, 189, 160, 456)

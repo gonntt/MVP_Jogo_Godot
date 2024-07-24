@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://crpha3gcpaff8"]
+
+[ext_resource type="Texture2D" uid="uid://dhu3pjprm0mq4" path="res://sprites_gameplay/wind.atlastex" id="1_rmd4u"]
+[ext_resource type="Script" path="res://script/projetil.gd" id="1_wdp7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q0ls"]
+size = Vector2(108, 98)
+
+[node name="Ar" type="Area2D"]
+script = ExtResource("1_wdp7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("1_rmd4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8q0ls")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

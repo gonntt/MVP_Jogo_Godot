@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0djjlbn85ten"]
+
+[ext_resource type="Texture2D" uid="uid://dte3bnovp531a" path="res://sprites/personagem.atlastex" id="1_jyctt"]
+
+[node name="Player" type="Sprite2D"]
+scale = Vector2(0.4, 0.359999)
+texture = ExtResource("1_jyctt")

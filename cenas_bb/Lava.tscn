@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://h11itrfo7tpt"]
+
+[ext_resource type="Script" path="res://script/obstaculo_lava.gd" id="1_uu5wl"]
+[ext_resource type="Texture2D" uid="uid://3eo7si4pofpg" path="res://sprites_gameplay/fogo.atlastex" id="2_o7do5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjkce"]
+size = Vector2(195, 226)
+
+[node name="Lava" type="StaticBody2D"]
+script = ExtResource("1_uu5wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -121)
+scale = Vector2(-0.64, 0.636364)
+texture = ExtResource("2_o7do5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -112)
+shape = SubResource("RectangleShape2D_tjkce")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6cnsh2t2m0sk"]
+
+[ext_resource type="Texture2D" uid="uid://drtuh3c1t3nty" path="res://sprites_gameplay/ray.atlastex" id="1_gx3mc"]
+[ext_resource type="Script" path="res://script/projetil.gd" id="1_o4p3i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpt3n"]
+size = Vector2(108, 64)
+
+[node name="Raio" type="Area2D"]
+script = ExtResource("1_o4p3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.636364)
+texture = ExtResource("1_gx3mc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dpt3n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
